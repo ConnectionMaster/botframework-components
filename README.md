@@ -1,33 +1,80 @@
-![Bot Framework Solutions](https://github.com/microsoft/botframework-solutions/raw/master/docs/assets/images/bot_framework_solutions_header.png)
+# Bot Framework Components
 
-This repository is the home for a list of Bot Framework Skills that provide productivity features as well as some experimental capabilities that are built on top of the latest BotBuilder SDK that offers [Skills](https://docs.microsoft.com/en-us/azure/bot-service/skills-conceptual?view=azure-bot-service-4.0) functionality.
+This repository contains *components* published by Microsoft for bots built on the Azure Bot Framework technology stack. They are part of the component model for building bots with re-usable building blocks. The model is built on a configurable [adaptive runtime](#adaptive-runtime), that can be extended by adding your own code, importing [packages](#packages) of functionality or connecting to other bots as [skills](#skills). Getting started [templates](#templates) provide dynamic code scaffolding, helping users get started quickly based on their scenario.
 
-| Name | Description |  
-|:------------:|------------| 
-|[CalendarSkill (Preview)](https://aka.ms/bfcalendarskill) | Add calendar capabilities to your Assistant. Powered by Microsoft Graph and Google. |
-|[EmailSkill (Preview)](https://aka.ms/bfemailskill) | Add email capabilities to your Assistant. Powered by Microsoft Graph and Google. |
-|[ToDoSkill (Preview)](https://aka.ms/bftodoskill) | Add task management capabilities to your Assistant. Powered by Microsoft Graph. |
-|[PointOfInterestSkill (Preview)](https://aka.ms/bfpoiskill) | Find points of interest and directions. Powered by Azure Maps and FourSquare. |
-|[AutomotiveSkill (Preview)](https://aka.ms/bfautoskill) | Add automotive management capabilities to your Assistant |
-|[BingSearchSkill (Preview)](https://aka.ms/bfbingsearchskill) | Add searching capabilities to your Assistant. Powered by Microsoft Bing. |
-|[HospitalitySkill (Preview)](https://aka.ms/bfhospitalityskill) | Add hospitality capabilities to your Assistant. |
-|[ITSMSkill (Preview)](https://aka.ms/bfitsmskill) | Add ticket and knowledge base related capabilities to your Assistant. Powered by ServiceNow. |
-|[MusicSkill (Preview)](https://aka.ms/bfmusicskill) | Add music capabilities to your Assistant. Powered by Spotify. |
-|[NewsSkill (Preview)](https://aka.ms/bfnewsskill) | Add news capabilities to your Assistant. Powered by Bing News Cognitive Services. |
-|[PhoneSkill (Preview)](https://aka.ms/bfphoneskill) | Add phone capabilities to your Assistant. |
-|[RestaurantBookingSkill (Preview)](https://aka.ms/bfrestaurantbookingskill) | Add hospitality capabilities to your Assistant. |
-|[WeatherSkill (Preview)](https://aka.ms/bfweatherskill) | Add weather capabilities to your Assistant. Powered by AccuWeather. |
+## Using Components
 
-## Documentation
+You'll primarily use components through [**Bot Framework Composer**](https://github.com/microsoft/BotFramework-Composer) - our visual bot authoring canvas for developers. From Composer you can add and remove packages from your bot, and the creation process creates bots built from the templates here.
 
-The Skills included in this repository are part of Bot Framework Solutions offering and please refer to the [site](https://aka.ms/bfsolutionsdocs) for comprehensive documentation for everything we offer.
+## Creating your own components
+
+You can also create your own packages and templates for use from Composer. We document creating components [here](https://docs.microsoft.com/composer/concept-packages). You can also check out [our samples](https://github.com/microsoft/BotBuilder-Samples/tree/main/composer_samples).
+
+## Index of Content
+
+### Templates
+
+Templates are pre-built bot projects designed for specific scenarios. We use [yeoman](https://yeoman.io) generators for scaffolding our templates.
+
+| Name         | npm | Description |
+|:------------:|:---:|:------------|
+|[Empty Bot](/generators/generator-bot-empty) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-empty.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-empty) | A simple bot with a root dialog and greeting dialog. |
+|[Core Bot with Azure Language Understanding](/generators/generator-bot-core-language) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-core-language.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-core-language) | A simple bot with Azure Language Understanding (LUIS) and common trigger phrases used to direct the conversation flow. |
+|[Core Assistant Bot](/generators/generator-bot-core-assistant) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-core-assistant.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-core-assistant) | A bot with Azure Language Understanding (LUIS) and common trigger phrases used to direct the conversation flow and help customers accomplish basic tasks. Designed to be extended with skills. |
+|[Enterprise Assistant Bot](/generators/generator-bot-enterprise-assistant) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-enterprise-assistant.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-enterprise-assistant) | A Core Assistant Bot with Calendar & People as skills. |
+|[Enterprise Calendar Bot](/generators/generator-bot-enterprise-calendar) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-enterprise-calendar.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-enterprise-calendar) | A bot with the ability to interact with M365 Calendar using Microsoft Graph. |
+|[Enterprise People Bot](/generators/generator-bot-enterprise-people) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-enterprise-people.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-enterprise-people) | A bot with the ability to search for people within Azure Active Directory using Microsoft Graph.|
+|[Adaptive Bot Generator](/generators/generator-bot-adaptive) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-adaptive.svg)](https://badge.fury.io/js/%40microsoft%2Fgenerator-bot-adaptive) | Used by other generators to scaffold web app or functions project. |
+
+### Packages
+
+Packages are bits of bots that you can add to your bot project. They can contain coded extensions like custom actions, adapters, or triggers, and declarative assets like dialogs, language generation or language understanding files.
+
+| Name         |Type   | NuGet | npm |Description |
+|:------------:|:------|:-----:|:---:|:-----------|
+|[Welcome](/packages/Welcome) | Dialogs | [![NuGet Badge](https://buildstats.info/nuget/Microsoft.Bot.Components.Welcome?includePreReleases=true)](https://www.nuget.org/packages/Microsoft.Bot.Components.Welcome/)| [![npm version](https://badge.fury.io/js/%40microsoft%2Fbot-components-welcome.svg)](https://badge.fury.io/js/%40microsoft%2Fbot-components-welcome) | Declarative assets supporting scenarios that welcome new and returning users. |
+|[HelpAndCancel](/packages/HelpAndCancel) | Dialogs | [![NuGet Badge](https://buildstats.info/nuget/Microsoft.Bot.Components.HelpAndCancel?includePreReleases=true)](https://www.nuget.org/packages/Microsoft.Bot.Components.HelpAndCancel/) | [![npm version](https://badge.fury.io/js/%40microsoft%2Fbot-components-helpandcancel.svg)](https://badge.fury.io/js/%40microsoft%2Fbot-components-helpandcancel) | Declarative assets supporting scenarios for "help" and "cancel" utterances. |
+|[Graph](/packages/Graph) | Custom Actions | [![NuGet Badge](https://buildstats.info/nuget/Microsoft.Bot.Components.Graph?includePreReleases=true)](https://www.nuget.org/packages/Microsoft.Bot.Components.Graph/) | | Custom actions for working with calendars and people through the MS Graph API.|
+|[Teams](/packages/Teams) | Triggers Actions | [![NuGet Badge](https://buildstats.info/nuget/Microsoft.Bot.Components.Teams?includePreReleases=true)](https://www.nuget.org/packages/Microsoft.Bot.Components.Teams/) | | Triggers and actions for working with Microsoft Teams.|
+
+### Virtual Assistant skills (Legacy)
+
+Skills built to work with the [Virtual Assistant](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) template. You can find the list of Virtual Assistant skills [here](/skills/csharp/readme.md).
 
 ## Need Help?
 
-If you have any questions please start with [Stack Overflow](https://stackoverflow.com/questions/tagged/botframework) where we're happy to help. Please use this GitHub Repos issue tracking capability to raise [issues](https://github.com/Microsoft/botframework-skills/issues/new?assignees=&labels=Type%3A+Bug&template=bug_report.md&title=) or [feature requests](https://github.com/Microsoft/botframework-skills/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=).
+Please use this GitHub repository issue to raise any [issues](https://github.com/Microsoft/botframework-components/issues/new?assignees=&labels=Type%3A+Bug&template=bug_report.md&title=) you encounter consuming these components, or [feature requests](https://github.com/Microsoft/botframework-components/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=) you'd like to see added.
+
+## Contributing
+
+We welcome contributions to this repository! Please see our [wiki](https://github.com/microsoft/botframework-components/wiki) for details on how to contribute.
+
+If you'd like to contribute a completely new package or template, please use our [community repo](https://github.com/BotBuilderCommunity/) and we can help publish them for you, or feel free to blaze your own trail and publish them independently.
 
 ## Reporting Security Issues
-Security issues and bugs should be reported privately, via email, to the Microsoft Security Response Center (MSRC) at [secure@microsoft.com](mailto:secure@microsoft.com). You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Further information, including the [MSRC PGP](https://technet.microsoft.com/en-us/security/dn606155) key, can be found in the [Security TechCenter](https://technet.microsoft.com/en-us/security/default).
+
+Security issues and bugs should be reported privately, via email, to the Microsoft Security Response Center (MSRC) at [secure@microsoft.com](mailto:secure@microsoft.com). You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Further information, including the [MSRC PGP](https://technet.microsoft.com/security/dn606155) key, can be found in the [Security TechCenter](https://technet.microsoft.com/security/default).
 
 ## License
-Copyright (c) Microsoft Corporation. All rights reserved.
+
+MIT License
+
+Copyright (c) Microsoft Corporation.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

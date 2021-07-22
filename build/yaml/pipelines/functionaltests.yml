@@ -1,0 +1,51 @@
+parameters:
+  - name: buildConfiguration
+    displayName: Build Configuration
+    type: string
+    default: Debug
+
+  - name: buildPlatform
+    displayName: Build Platform
+    type: string
+    default: AnyCPU
+
+steps:
+
+- task: UseDotNet@2
+  displayName: "Use .Net Core sdk 3.1.x"
+  inputs:
+    version: 3.1.x
+
+- task: NuGetToolInstaller@1
+  displayName: "Use NuGet"
+
+- task: NuGetCommand@2
+  displayName: "NuGet restore"
+  inputs:
+    restoreSolution: tests/functional/ComponentsFunctionalTests.sln
+
+- task: MSBuild@1
+  displayName: "Build"
+  inputs:
+    solution: "tests/functional/ComponentsFunctionalTests.sln"
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run Unit Tests'
+  inputs:
+    command: test
+    projects: 'tests/functional/Tests/TranscriptTestRunnerTests/TranscriptTestRunnerTests.csproj'
+    testRunTitle: 'FunctionalTests-CI-Results-$(BUILD.BUILDNUMBER)'
+    arguments: '-v n --configuration ${{ parameters.buildConfiguration }} --no-build --no-restore --collect "Code Coverage" --logger "trx;LogFileName=FunctionalTests-CI-Results-$(BUILD.BUILDNUMBER).trx"'
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish Artifact: build folder"
+  inputs:
+    PathtoPublish: build
+    ArtifactName: build
+
+- powershell: |
+   cd ..
+   ls -R
+  displayName: "Dir workspace"
+  continueOnError: true
+  condition: succeededOrFailed()

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://schemas.botframework.com/schemas/component/v1.0/component.schema",
+  "$role": "implements(Microsoft.IDialog)",
+  "title": "Microsoft Graph - Find Meeting Times",
+  "description": "Suggest meeting times from Microsoft Graph API.",
+  "type": "object",
+  "required": [
+    "token",
+    "attendees",
+    "duration"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Id",
+      "description": "Optional id for the dialog",
+      "examples": [
+        "FindMeetingTimesDialog"
+      ]
+    },
+    "resultProperty": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Result property",
+      "description": "Named state location to store result.",
+      "examples": [
+        "turn.result"
+      ]
+    },
+    "token": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Token",
+      "description": "Microsoft Graph API authentication token.",
+      "examples": [
+        "=turn.token.token"
+      ]
+    },
+    "attendees": {
+      "$ref": "schema:#/definitions/arrayExpression",
+      "title": "Attendees",
+      "description": "Event attendees",
+      "default": [
+        {
+          "EmailAddress": {
+            "Name": "<attendee name>",
+            "Address": "<attendee email>"
+          }
+        }
+      ],
+      "examples": [
+        "=dialog.event.attendees"
+      ]
+    },
+    "duration": {
+      "$ref": "schema:#/definitions/integerExpression",
+      "title": "Duration",
+      "description": "Duration of meeting in minutes",
+      "examples": [
+        "30"
+      ]
+    },
+    "timeZone": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Time zone",
+      "description": "Time zone for the meeting",
+      "examples": [
+        "Pacific Standard Time"
+      ]
+    }
+  }
+}

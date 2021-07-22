@@ -260,12 +260,7 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
-/solutions/**/node_modules/
-/templates/**/node_modules/
-/lib/**/node_modules/
-/tools/**/node_modules/
-/skills/**/node_modules/
-/samples/**/node_modules/
+**/node_modules/
 
 # Visual Studio 6 build log
 *.plg
@@ -345,6 +340,7 @@ ASALocalRun/
 **/cognitivemodels.development.json
 **/skills.production.json
 **/skills.development.json
+**/testsettings.development.json
 
 # Local deployment files
 /solutions/**/.deployment
@@ -360,6 +356,10 @@ ASALocalRun/
 **/remove_skill_log.txt
 **/publish_log.txt
 **/.deployment
+**/deployment_settings.json
+
+# Composer generated files
+**/luis.settings.composer.westus.json
 
 # Zip files
 *.7z
@@ -377,3 +377,28 @@ ASALocalRun/
 /.project
 *.luis
 experimental/generator-dotnet-yeoman/node_modules
+
+# VSCode files
+.vscode/
+
+# Allow the root-level /packages/ directory or it gets confused with NuGet directories
+!/[Pp]ackages/*
+!/tests/[Pp]ackages/*
+
+# Allow the packages directory under tests
+!/tests/unit/[Pp]ackages/*
+
+# Ignore correct yarn files (no zero install support)
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Ignore package lock files
+package-lock.json
+
+# Ignore test bots
+testing/*

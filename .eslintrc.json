@@ -1,0 +1,14 @@
+{
+  "env": {
+    "es2017": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "root": true
+}
+

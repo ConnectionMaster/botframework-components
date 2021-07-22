@@ -1,0 +1,2 @@
+# Don't check in any files that are generated
+**/generated/**

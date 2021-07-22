@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.botframework.com/schemas/component/v1.0/component.schema",
+  "$role": "implements(Microsoft.IDialog)",
+  "type": "object",
+  "title": "Microsoft Graph - Get Event By ID",
+  "description": "Lookup event the Microsoft Graph API by its Event Id.",
+  "required": [
+    "token",
+    "eventId",
+    "timeZone"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Id",
+      "description": "Optional id for the dialog",
+      "examples": [
+        "GetEventByIdDialog"
+      ]
+    },
+    "resultProperty": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Result property",
+      "description": "Named state location to store result.",
+      "examples": [
+        "turn.result"
+      ]
+    },
+    "token": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Token",
+      "description": "Microsoft Graph API authentication token.",
+      "examples": [
+        "=turn.token.token"
+      ]
+    },
+    "eventId": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Event ID",
+      "description": "The GUID ID of the event to lookup.",
+      "examples": [
+        "BA4AA317-25AB-4D59-A2FF-4AC0C93D99FD"
+      ]
+    },
+    "timeZone": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Time zone",
+      "description": "Target time zone to display the event in. Please see https://docs.microsoft.com/en-us/graph/api/resources/datetimetimezone?view=graph-rest-1.0 for more information about the timezones available.",
+      "examples": [
+        "Pacific Standard Time"
+      ]
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schemas.botframework.com/schemas/component/v1.0/component.schema",
+  "$role": "implements(Microsoft.IDialog)",
+  "title": "Microsoft Graph - Get Events",
+  "description": "Lookup events from Microsoft Graph API.",
+  "type": "object",
+  "required": [
+    "token",
+    "start",
+    "end",
+    "timeZone"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "Id",
+      "description": "Optional id for the dialog",
+      "examples": [
+        "GetEventsDialog"
+      ]
+    },
+    "resultProperty": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Result property",
+      "description": "Named state location to store result.",
+      "examples": [
+        "turn.result"
+      ]
+    },
+    "token": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "Token",
+      "description": "Microsoft Graph API authentication token.",
+      "examples": [
+        "=turn.token.token"
+      ]
+    },
+    "start": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "format": "date-time",
+      "title": "Start",
+      "description": "Start datetime of event search range.",
+      "examples": [
+        "2021-01-01T00:00:00"
+      ]
+    },
+    "end": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "format": "date-time",
+      "title": "End",
+      "description": "End datetime of event search range.",
+      "examples": [
+        "2021-01-01T01:00:00"
+      ]
+    },
+    "dateTimeType": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "DateTimeType",
+      "description": "DateTime type, e.g. date, datetime, datetimerange.",
+      "examples": [
+        "date",
+        "datetime",
+        "datetimerange"
+      ]
+    },
+    "timeZone": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "TimeZone",
+      "description": "Target time zone to display events in.",
+      "examples": [
+        "Pacific Standard Time"
+      ]
+    },
+    "userEmail": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "User Email",
+      "description": "Current user's email address (to exclude from attendees list).",
+      "examples": [
+        "janedoe@contoso.com"
+      ]
+    },
+    "futureEventsOnly": {
+      "$ref": "schema:#/definitions/booleanExpression",
+      "title": "Future Events Only",
+      "description": "If true, only return matching events in the future.",
+      "examples": [
+        "=turn.futureEventsOnly",
+        "true",
+        "false"
+      ]
+    },
+    "maxResults": {
+      "$ref": "schema:#/definitions/integerExpression",
+      "title": "Max Results",
+      "description": "Max number of results to return.",
+      "examples": [
+        "10"
+      ]
+    }
+  }
+}
